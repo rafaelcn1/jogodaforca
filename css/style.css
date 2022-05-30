@@ -80,6 +80,100 @@ body {
     flex-grow: 0;
 }
 
+.botaoComecarJogar {
+    /* Button */
+    /* Auto layout */
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 8px;
+    position: absolute;
+    width: 317px;
+    height: 105px;
+    left: 562px;
+    top: 394px;
+    right: 561px;
+    bottom: 525px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+    border-radius: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.botaoComecarJogar input {
+    width: 269px;
+    height: 57px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* White */
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.botaoAdicionarNovaPalavra {
+    /* Button */
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 8px;
+    position: absolute;
+    width: 317px;
+    height: 102px;
+    left: 562px;
+    top: 528px;
+    /* Dark blue/dark-blue-300 */
+    border: 1px solid #0A3871;
+    border-radius: 24px;
+    color: #0A3871;
+    cursor: pointer;
+}
+
+.botaoAdicionarNovaPalavra input {
+    /* Button */
+    width: 269px;
+    height: 57px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.digiteUmaPalavra {
+    /* Digite seu texto */
+    position: absolute;
+    height: 48px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 150%;
+    color: #0A3871;
+    background: #D8DFE8;
+    border: none;
+    top: 168px;
+    right: 540px;
+    bottom: 808px;
+    left: 240px;
+}
+
 .copyright {
     font-size: 18px;
     text-align: center;
@@ -90,7 +184,7 @@ body {
     display: inline-block;
     position: relative;
     width: 100%;
-    top: 100px;
+    top: 1014px;
 }
 
 footer a {
