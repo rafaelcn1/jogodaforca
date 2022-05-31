@@ -261,6 +261,233 @@ body {
     flex-grow: 1;
 }
 
+#frame1 {
+    /* Frame 1 */
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+    position: absolute;
+    width: 252px;
+    height: 18px;
+    top: 667px;
+    right: 949px;
+    bottom: 339px;
+    left: 376px;
+}
+
+#frame1 .exclamacao {
+    /* bi:exclamation-circle-fill */
+    width: 16px;
+    height: 16px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#frame1 .exclamacao img {
+    /* Group */
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+}
+
+#frame1 .p1 {
+    /* Apenas letras minúsculas e sem acento. */
+    width: 228px;
+    height: 18px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    /* identical to box height, or 18px */
+    /* Gray/gray-400 */
+    color: #495057;
+    opacity: 0.8;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+#keyboard {
+    /* Keyboard */
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    position: absolute;
+    width: 464px;
+    height: 152px;
+    left: 476px;
+    top: 554px;
+    right: 500px;
+    bottom: 318px;
+}
+
+#word {
+    /* Word */
+    width: 464px;
+    height: 92px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#letter {
+    /* Letter */
+    position: absolute;
+    width: 80px;
+    height: 92px;
+    top: 0px;
+}
+
+#otherLetters {
+    /* Other letters */
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+    width: 136px;
+    height: 36px;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+#letter .labelLetter {
+    /* A */
+    position: absolute;
+    width: 80px;
+    height: 72px;
+    top: 0px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 150%;
+    /* identical to box height, or 72px */
+    text-align: center;
+    color: #000000;
+    opacity: 0;
+}
+
+.retangulo {
+    /* Rectangle 6 */
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    top: 88px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+    border-radius: 8px;
+}
+
+#actions {
+    /* Actions */
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+    position: absolute;
+    width: 688px;
+    height: 67px;
+    left: 376px;
+    top: 904px;
+    right: 376px;
+    bottom: 53px;
+}
+
+#actions .novoJogo {
+    /* Button */
+    /* Auto layout */
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 8px;
+    width: 332px;
+    height: 67px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+    border-radius: 24px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+#actions .novoJogo input {
+    /* Button */
+    width: 284px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    background: #0A3871;
+    cursor: pointer;
+    border: none
+}
+
+#actions .desistir {
+    /* Button */
+    /* Auto layout */
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 8px;
+    width: 332px;
+    height: 67px;
+    /* Dark blue/dark-blue-300 */
+    background: #FFFFFF;
+    border-radius: 24px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    color: #0A3871;
+    cursor: pointer;
+}
+
+#actions .desistir input {
+    /* Button */
+    width: 284px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    background: #FFFFFF;
+    cursor: pointer;
+    border: none
+}
+
 .copyright {
     font-size: 18px;
     text-align: center;
