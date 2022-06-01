@@ -70,7 +70,38 @@ var criarInput = function(nomeInput, tipoInput, nomeValue, nomeDoPai) {
     pai.appendChild(inputCriado);
 }
 
+var criarTabuleiro = function() {
+    console.log("tabuleiro criado!");
+    //Criando a DIV de id grupo5
+    criarDiv("grupo5", "container");
+    var grupo5 = document.getElementById("grupo5");
+    console.log(grupo5);
+    //Criando o desenho da Forca
+    var retangulo14 = document.createElement("img");
+    retangulo14.setAttribute("class", "retangulo14");
+    retangulo14.setAttribute("src", "./img/Rectangle 14.png");
 
+    var retangulo15 = document.createElement("img");
+    retangulo15.setAttribute("class", "retangulo15");
+    retangulo15.setAttribute("src", "./img/Rectangle 15.png");
+
+    var retangulo16 = document.createElement("img");
+    retangulo16.setAttribute("class", "retangulo16");
+    retangulo16.setAttribute("src", "./img/Rectangle 16.png");
+
+
+    var retangulo17 = document.createElement("img");
+    retangulo17.setAttribute("class", "retangulo17");
+    retangulo17.setAttribute("src", "./img/Rectangle 17.png");
+
+
+    grupo5.appendChild(retangulo14);
+    grupo5.appendChild(retangulo15);
+    grupo5.appendChild(retangulo16);
+    grupo5.appendChild(retangulo16);
+
+
+}
 
 var criarExclamacao = function() {
     criarDiv("frame1", "container");
@@ -95,8 +126,10 @@ var salvarComecar = function() {
     console.log("Palavra salva, vai começar o jogo!");
     var digiteUmaPalavra = document.querySelector(".digiteUmaPalavra");
     var palavraOuFrase = digiteUmaPalavra.value.toUpperCase();
-    jogo(palavraOuFrase);
+
     limparSegundaTela();
+    criarTabuleiro();
+    jogo(palavraOuFrase);
 }
 
 var limparSegundaTela = function() {

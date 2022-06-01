@@ -488,6 +488,69 @@ body {
     border: none
 }
 
+#grupo5 {
+    /* Group 5 */
+    position: absolute;
+    width: 294px;
+    height: 360px;
+    left: 573px;
+    top: 88px;
+    right: 573px;
+    bottom: 576px;
+}
+
+.retangulo14 {
+    /* Rectangle 14 */
+    position: absolute;
+    width: 294px;
+    height: 5px;
+    /*left: 573px;
+    right: 573px;*/
+    bottom: 576px;
+    top: 443px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+    border-radius: 8px;
+}
+
+.retangulo15 {
+    /* Rectangle 15 */
+    position: absolute;
+    width: 4.5px;
+    height: 360px;
+    left: 79.67px;
+    right: 208.83px;
+    top: 88px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+    border-radius: 8px;
+}
+
+.retangulo16 {
+    /* Rectangle 16 */
+    position: absolute;
+    width: 177.75px;
+    height: 4.5px;
+    left: 79.67px;
+    right: 173.25px;
+    top: 88px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+    border-radius: 8px;
+}
+
+.retangulo17 {
+    /* Rectangle 17 */
+    position: absolute;
+    width: 4.5px;
+    height: 49.5px;
+    left: 255px;
+    top: 88px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+    border-radius: 8px;
+}
+
 .copyright {
     font-size: 18px;
     text-align: center;
