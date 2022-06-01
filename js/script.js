@@ -5,7 +5,7 @@ var escolherPalavra = function() {
     if (palavrasCadastradas.length != 0) {
         index = Math.floor(Math.random() * palavrasCadastradas.length);
     }
-    console.log(palavrasCadastradas[index]);
+    return palavrasCadastradas[index];
 }
 
 //Inicio Tela Inicial
@@ -54,7 +54,8 @@ var botaoComecarJogar = function() {
     } else {
         removerBotoesIniciais();
         criarTabuleiro();
-        var palavraOuFrase = palavrasCadastradas[0];
+        var palavraOuFrase = escolherPalavra();
+        console.log("Palavra Escolhida: " + palavraOuFrase);
         jogo(palavraOuFrase);
     }
 
@@ -130,7 +131,6 @@ var criarInput = function(nomeInput, tipoInput, nomeValue, nomeDoPai) {
 }
 
 var criarTabuleiro = function() {
-    console.log("tabuleiro criado!");
     //Criando a DIV de id grupo5
     criarDiv("grupo5", "container");
     var grupo5 = document.getElementById("grupo5");
@@ -181,17 +181,17 @@ var criarExclamacao = function() {
 
 
 var salvarComecar = function() {
-
     var digiteUmaPalavra = document.querySelector(".digiteUmaPalavra");
     var palavraOuFrase = digiteUmaPalavra.value.toUpperCase();
     if (palavraOuFrase == "") {
         alert("Favor inserir uma palavra ou clique no botão Cancelar!")
     } else {
-        //limparSegundaTela();
-        //criarTabuleiro();
-        palavrasCadastradas.push(palavraOuFrase);
-        console.log(palavrasCadastradas);
-        criarTelaInicial();
+        if (palavrasCadastradas.indexOf(palavraOuFrase) == -1) {
+            palavrasCadastradas.push(palavraOuFrase);
+            criarTelaInicial();
+        } else {
+            alert("Palavra já cadastrada! Favor cadastrar outra ou Cancelar!");
+        }
     }
 }
 
