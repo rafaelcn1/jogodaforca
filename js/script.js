@@ -1,26 +1,85 @@
+var palavrasCadastradas = [];
+
+var escolherPalavra = function() {
+    var index = 0;
+    if (palavrasCadastradas.length != 0) {
+        index = Math.floor(Math.random() * palavrasCadastradas.length);
+    }
+    console.log(palavrasCadastradas[index]);
+}
+
+//Inicio Tela Inicial
+var telaInicial = function() {
+    criarDiv("botaoComecarJogar", "container");
+    criarInput("botaoComecarJogar", "button", "Comceçar a Jogar", "botaoComecarJogar");
+
+    criarDiv("botaoAdicionarNovaPalavra", "container");
+    criarInput("botaoAdicionarNovaPalavra", "button", "Adicionar Nova Palavra", "botaoAdicionarNovaPalavra");
+}
+
+
+var criarTelaInicial = function() {
+    var frame1 = document.getElementById("frame1");
+    if (frame1 != null) {
+        frame1.remove();
+    }
+
+    var digiteUmaPalavra = document.getElementById("digiteUmaPalavra");
+    if (digiteUmaPalavra != null) {
+        digiteUmaPalavra.remove();
+    }
+
+
+    var frame3 = document.getElementById("frame3");
+    if (frame3 != null) {
+        frame3.remove();
+    }
+
+    telaInicial();
+
+}
+
+// Fim tela inicial
 // Inicio da Tela 2
 //Função para começar o jogo, onde será excluido os botões iniciais e criado as divs do botões do frame3 e o input da palavra
-var comecarJogar = function() {
+var botaoComecarJogar = function() {
 
+    //var digiteUmaPalavra = document.querySelector(".digiteUmaPalavra");
+    //var palavraOuFrase = digiteUmaPalavra.value.toUpperCase();
+
+    //limparSegundaTela();
+
+    if (palavrasCadastradas.length <= 0) {
+        alert("Favor adicionar pelo menos 1 palavra!")
+    } else {
+        removerBotoesIniciais();
+        criarTabuleiro();
+        var palavraOuFrase = palavrasCadastradas[0];
+        jogo(palavraOuFrase);
+    }
+
+}
+
+var botaoAdicionarNovaPalavra = function() {
     criarExclamacao();
     criarDiv("digiteUmaPalavra", "container");
     criarInput("digiteUmaPalavra", "text", "digiteUmaPalavra", "digiteUmaPalavra");
-
     removerBotoesIniciais();
 
     //Adicionar novos botões
     criandoNovosBotoesFrame3();
 }
 
-var adicionarNovaPalavra = function() {
-    console.log("adicionarNovaPalavra");
-}
-
 var removerBotoesIniciais = function() {
     var botaoComecarJogar = document.getElementById("botaoComecarJogar");
     var botaoAdicionarNovaPalavra = document.getElementById("botaoAdicionarNovaPalavra");
-    botaoComecarJogar.remove();
-    botaoAdicionarNovaPalavra.remove();
+
+    if (botaoComecarJogar != null) {
+        botaoComecarJogar.remove();
+    }
+    if (botaoAdicionarNovaPalavra != null) {
+        botaoAdicionarNovaPalavra.remove();
+    }
 }
 
 var criandoNovosBotoesFrame3 = function() {
@@ -75,7 +134,6 @@ var criarTabuleiro = function() {
     //Criando a DIV de id grupo5
     criarDiv("grupo5", "container");
     var grupo5 = document.getElementById("grupo5");
-    console.log(grupo5);
     //Criando o desenho da Forca
     var retangulo14 = document.createElement("img");
     retangulo14.setAttribute("class", "retangulo14");
@@ -123,13 +181,18 @@ var criarExclamacao = function() {
 
 
 var salvarComecar = function() {
-    console.log("Palavra salva, vai começar o jogo!");
+
     var digiteUmaPalavra = document.querySelector(".digiteUmaPalavra");
     var palavraOuFrase = digiteUmaPalavra.value.toUpperCase();
-
-    limparSegundaTela();
-    criarTabuleiro();
-    jogo(palavraOuFrase);
+    if (palavraOuFrase == "") {
+        alert("Favor inserir uma palavra ou clique no botão Cancelar!")
+    } else {
+        //limparSegundaTela();
+        //criarTabuleiro();
+        palavrasCadastradas.push(palavraOuFrase);
+        console.log(palavrasCadastradas);
+        criarTelaInicial();
+    }
 }
 
 var limparSegundaTela = function() {
@@ -205,14 +268,28 @@ var criandoBotoesAction = function() {
 
 
 var novoJogo = function() {
-    console.log("Vai cancelar o jogo!");
+    var grupo5 = document.getElementById("grupo5");
+    grupo5.remove();
+
+    var keyboard = document.getElementById("keyboard");
+    keyboard.remove();
+
+    var actions = document.getElementById("actions");
+    actions.remove();
+
+    criarTelaInicial();
+
 }
 
 var desistir = function() {
-    console.log("Fim de jogo!");
+    let confirma = confirm("Deseja Desistir?");
+    if (confirma) {
+        window.location.assign("./index.html");
+    }
 }
+
 var cancelar = function() {
-    console.log("Vai cancelar o jogo!");
+    criarTelaInicial();
 }
 
 // Fim da Tela 3
