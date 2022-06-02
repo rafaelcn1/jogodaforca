@@ -427,6 +427,7 @@ var youWin = function() {
     voceVenceu.setAttribute("class", "voceVenceu");
     voceVenceu.innerHTML = "Você Venceu. Parabéns!";
     divVoceVenceu.appendChild(voceVenceu);
+    pararCapturarLetraDoTeclado();
 }
 
 //Função de alerta de perdedor!
@@ -437,6 +438,7 @@ var youLose = function() {
     vocePerdeu.setAttribute("class", "vocePerdeu");
     vocePerdeu.innerHTML = "Você Perdeu!";
     divVocePerdeu.appendChild(vocePerdeu);
+    pararCapturarLetraDoTeclado();
 }
 
 //Função para criar os botões de ação do jogo
