@@ -136,6 +136,7 @@ body {
     border-radius: 24px;
     color: #0A3871;
     cursor: pointer;
+    background-color: #D8DFE8;
 }
 
 .botaoAdicionarNovaPalavra input {
@@ -331,6 +332,7 @@ body {
     top: 554px;
     right: 500px;
     bottom: 318px;
+    margin: 0 auto;
 }
 
 #word {
@@ -359,7 +361,6 @@ body {
     align-items: flex-start;
     padding: 0px;
     gap: 24px;
-    width: 136px;
     height: 36px;
     /* Inside auto layout */
     flex: none;
@@ -367,11 +368,30 @@ body {
     flex-grow: 0;
 }
 
-#letter .labelLetter {
+#otherLetters .otherLetters {
+    width: 16px;
+    height: 36px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 150%;
+    /* identical to box height, or 36px */
+    text-align: center;
+    /* Gray/gray-400 */
+    color: #495057;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#labelLetter {
     /* A */
     position: absolute;
     width: 80px;
     height: 72px;
+    left: 0px;
     top: 0px;
     font-family: 'Inter';
     font-style: normal;
@@ -380,8 +400,7 @@ body {
     line-height: 150%;
     /* identical to box height, or 72px */
     text-align: center;
-    color: #000000;
-    opacity: 0;
+    color: #0A3871;
 }
 
 .retangulo {
@@ -428,7 +447,7 @@ body {
     flex: none;
     order: 0;
     flex-grow: 1;
-    color: #FFFFFF;
+    color: #D8DFE8;
     cursor: pointer;
 }
 
@@ -460,7 +479,7 @@ body {
     width: 332px;
     height: 67px;
     /* Dark blue/dark-blue-300 */
-    background: #FFFFFF;
+    background: #D8DFE8;
     border-radius: 24px;
     /* Inside auto layout */
     flex: none;
@@ -497,6 +516,15 @@ body {
     top: 88px;
     right: 573px;
     bottom: 576px;
+}
+
+.ellipse {
+    /* Ellipse 9 (Stroke) */
+    position: absolute;
+    width: 63px;
+    height: 63px;
+    left: 225px;
+    top: 133px;
 }
 
 .retangulo14 {
@@ -549,6 +577,69 @@ body {
     /* Dark blue/dark-blue-300 */
     background: #0A3871;
     border-radius: 8px;
+}
+
+.retangulo18 {
+    /* Rectangle 18 */
+    position: absolute;
+    width: 4.5px;
+    height: 135px;
+    left: 255px;
+    top: 196px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+}
+
+.retangulo19 {
+    /* Rectangle 19 */
+    position: absolute;
+    width: 4.5px;
+    height: 72px;
+    left: 237px;
+    top: 324.62px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+    border-radius: 8px;
+    transform: rotate(30deg);
+}
+
+.retangulo20 {
+    /* Rectangle 20 */
+    position: absolute;
+    width: 4.5px;
+    height: 72px;
+    left: 273px;
+    top: 324.62px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+    border-radius: 8px;
+    transform: matrix(-0.87, 0.5, 0.5, 0.87, 0, 0);
+}
+
+.retangulo21 {
+    /* Rectangle 21 */
+    position: absolute;
+    width: 4.5px;
+    height: 72px;
+    left: 273px;
+    top: 194.88px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+    border-radius: 8px;
+    transform: matrix(-0.87, 0.5, 0.5, 0.87, 0, 0);
+}
+
+.retangulo22 {
+    /* Rectangle 22 */
+    position: absolute;
+    width: 4.5px;
+    height: 72px;
+    left: 237px;
+    top: 194.88px;
+    /* Dark blue/dark-blue-300 */
+    background: #0A3871;
+    border-radius: 8px;
+    transform: rotate(30deg);
 }
 
 .copyright {

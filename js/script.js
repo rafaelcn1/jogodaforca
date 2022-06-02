@@ -1,4 +1,11 @@
+var teclaDigitada;
+var totalDeAcertos = 0;
+var totalDeErros = 6;
+var arrayDeLetrasErradas = [];
+var arrayDeLetrasCertas = [];
 var palavrasCadastradas = [];
+var palavraOuFrase;
+
 
 var escolherPalavra = function() {
     var index = 0;
@@ -8,16 +15,15 @@ var escolherPalavra = function() {
     return palavrasCadastradas[index];
 }
 
-//Inicio Tela Inicial
+//Função para criar as divs e inputs da Tela Inicial
 var telaInicial = function() {
     criarDiv("botaoComecarJogar", "container");
     criarInput("botaoComecarJogar", "button", "Comceçar a Jogar", "botaoComecarJogar");
-
     criarDiv("botaoAdicionarNovaPalavra", "container");
     criarInput("botaoAdicionarNovaPalavra", "button", "Adicionar Nova Palavra", "botaoAdicionarNovaPalavra");
 }
 
-
+//Função que vai criar a tela incial
 var criarTelaInicial = function() {
     var frame1 = document.getElementById("frame1");
     if (frame1 != null) {
@@ -41,40 +47,53 @@ var criarTelaInicial = function() {
 
 // Fim tela inicial
 // Inicio da Tela 2
-//Função para começar o jogo, onde será excluido os botões iniciais e criado as divs do botões do frame3 e o input da palavra
+
+//Função de ação para começar o jogo, onde será excluido os botões iniciais e criado as divs do botões do frame3 e o input da palavra
 var botaoComecarJogar = function() {
 
-    //var digiteUmaPalavra = document.querySelector(".digiteUmaPalavra");
-    //var palavraOuFrase = digiteUmaPalavra.value.toUpperCase();
-
-    //limparSegundaTela();
-
+    //Condição para checar se o array de palavras cadastradas está vazio
     if (palavrasCadastradas.length <= 0) {
         alert("Favor adicionar pelo menos 1 palavra!")
     } else {
-        removerBotoesIniciais();
-        criarTabuleiro();
-        var palavraOuFrase = escolherPalavra();
+        //Capturando as teclas digitadas
+        capturarLetraDoTeclado();
+
+        //Salvando a palavra escolhida aleatória
+        palavraOuFrase = escolherPalavra();
         console.log("Palavra Escolhida: " + palavraOuFrase);
+
+        //Removendo os botões da página inicial
+        removerBotoesIniciais();
+
+        //Criando o tabuleiro
+        criarTabuleiro();
+
+        //Jogar
         jogo(palavraOuFrase);
     }
-
 }
 
+// Função para chamar a tela para cadastrar palavras
 var botaoAdicionarNovaPalavra = function() {
+    //Criando a exclamção de aviso
     criarExclamacao();
+
+    //Criando as div e input necessárias da página
     criarDiv("digiteUmaPalavra", "container");
     criarInput("digiteUmaPalavra", "text", "digiteUmaPalavra", "digiteUmaPalavra");
+    //Removendo os botões da página incial
     removerBotoesIniciais();
 
-    //Adicionar novos botões
+    //Adicionar novos botões de salvar e cancelar
     criandoNovosBotoesFrame3();
 }
 
+//Função criada para remover os botões da página inicial
 var removerBotoesIniciais = function() {
     var botaoComecarJogar = document.getElementById("botaoComecarJogar");
     var botaoAdicionarNovaPalavra = document.getElementById("botaoAdicionarNovaPalavra");
 
+    //Condições para checar se existe os elementos
     if (botaoComecarJogar != null) {
         botaoComecarJogar.remove();
     }
@@ -83,6 +102,7 @@ var removerBotoesIniciais = function() {
     }
 }
 
+//Função criada para criar os botões e input da página de cadastro de palavras
 var criandoNovosBotoesFrame3 = function() {
     //Criando uma div para frame3 e as div dos butões
     criarDiv('frame3', 'container');
@@ -98,6 +118,7 @@ var criandoNovosBotoesFrame3 = function() {
     criarInput("cancelar", "button", "Cancelar", "cancelar");
 }
 
+//Função para criar Divs
 var criarDiv = function(nomeDaDiv, nomeDoPai) {
     //Capturando o container
     var pai = document.getElementById(nomeDoPai);
@@ -109,6 +130,7 @@ var criarDiv = function(nomeDaDiv, nomeDoPai) {
 
 }
 
+//Função para criar inputs
 var criarInput = function(nomeInput, tipoInput, nomeValue, nomeDoPai) {
     var inputCriado = document.createElement("input");
     //Adicionando os atributos no input button
@@ -127,9 +149,12 @@ var criarInput = function(nomeInput, tipoInput, nomeValue, nomeDoPai) {
 
     }
     var pai = document.getElementById(nomeDoPai);
+    //Adicionando os input ao elemento pai
     pai.appendChild(inputCriado);
 }
 
+
+//Função para criar o tabuleiro do jogo!
 var criarTabuleiro = function() {
     //Criando a DIV de id grupo5
     criarDiv("grupo5", "container");
@@ -156,11 +181,12 @@ var criarTabuleiro = function() {
     grupo5.appendChild(retangulo14);
     grupo5.appendChild(retangulo15);
     grupo5.appendChild(retangulo16);
-    grupo5.appendChild(retangulo16);
+    grupo5.appendChild(retangulo17);
 
 
 }
 
+//Função para criar a exclamção de aviso
 var criarExclamacao = function() {
     criarDiv("frame1", "container");
     var frame1 = document.getElementById("frame1");
@@ -175,18 +201,25 @@ var criarExclamacao = function() {
     frame1.appendChild(paragratoExclamacao);
 }
 
-// Fim da Tela 2
+//Função para cancelar o jogo, para iniciar um novo jogo
+var cancelar = function() {
+    novoJogo();
+}
 
-// Inicio da Tela 3
 
-
+//Função para o botão de salvar a palavra cadastrada e começar o jogo
 var salvarComecar = function() {
     var digiteUmaPalavra = document.querySelector(".digiteUmaPalavra");
+
+    //Convertendo a palavra para maiúscula
     var palavraOuFrase = digiteUmaPalavra.value.toUpperCase();
+    //Caso seja vazio, gerar um alerta de aviso para cadastrar ou cancelar!
     if (palavraOuFrase == "") {
         alert("Favor inserir uma palavra ou clique no botão Cancelar!")
     } else {
-        if (palavrasCadastradas.indexOf(palavraOuFrase) == -1) {
+        //Checando se a palavra cadastrada já existe no array de palavras cadastradas
+        if (palavrasCadastradas.indexOf(palavraOuFrase) === -1) {
+            //Se não tiver, será adicionada a palavra e criado o tabuleiro do jogo!
             palavrasCadastradas.push(palavraOuFrase);
             criarTelaInicial();
         } else {
@@ -195,18 +228,7 @@ var salvarComecar = function() {
     }
 }
 
-var limparSegundaTela = function() {
-    var divFrame3 = document.getElementById("frame3");
-    divFrame3.remove();
-
-    var divFrame1 = document.getElementById("frame1");
-    divFrame1.remove();
-
-    var divDigiteUmaPalavra = document.getElementById("digiteUmaPalavra");
-    divDigiteUmaPalavra.remove();
-}
-
-
+//Função para criar as letter, onde será salvo as letras digitadas na hora do jogo
 var criarLetter = function(localDeInicio) {
     //Capturando o container
     var pai = document.getElementById("word");
@@ -219,6 +241,25 @@ var criarLetter = function(localDeInicio) {
 
 }
 
+//Criando as letters quando for começar o jogo, para adicionar os traços ao tabuleiro
+var criandoAsLabelsLettes = function() {
+    var letters = document.querySelectorAll("#letter");
+    for (let index = 0; index < letters.length; index++) {
+        let letter = letters[index];
+        //Criando a label que vai ser inserida a letra
+        var label = document.createElement("label");
+        label.setAttribute("id", "labelLetter");
+        letter.appendChild(label);
+
+        //Criando a img do retangulo
+        var img = document.createElement("img");
+        img.setAttribute("src", "img/retangulo.png");
+        img.setAttribute("class", "retangulo");
+        letter.appendChild(img);
+    }
+}
+
+//Função para criar o jogo em si
 var jogo = function(palavraOuFrase) {
     criarDiv("keyboard", "container");
     criarDiv("word", "keyboard");
@@ -233,24 +274,160 @@ var jogo = function(palavraOuFrase) {
 
     }
     //Salvando todas as div letter criadas
-    var letters = document.querySelectorAll("#letter");
-    for (let index = 0; index < letters.length; index++) {
-        let letter = letters[index];
-        //Criando a label que vai ser inserida a letra
-        var label = document.createElement("label");
-        label.setAttribute("class", "labelLetter");
-        letter.appendChild(label);
-
-        //Criando a img do retangulo
-        var img = document.createElement("img");
-        img.setAttribute("src", "img/retangulo.png");
-        img.setAttribute("class", "retangulo");
-        letter.appendChild(img);
-    }
+    criandoAsLabelsLettes();
 
     criandoBotoesAction();
 }
 
+//Função com a regra do jogo
+var regraDoJogo = function() {
+    var letra = teclaDigitada.toUpperCase();
+    if (letra.length > 0) {
+        letra = letra[0];
+    }
+    if (palavraOuFrase.indexOf(letra) > -1) {
+        regraDeAcerto(letra);
+    } else {
+        regraDeErro(letra);
+    }
+
+
+}
+
+//Função com a regra de acertos do jogo, onde irá preencher as letras certas no lugar certo
+var regraDeAcerto = function(letra) {
+
+    if (arrayDeLetrasCertas.indexOf(letra) > -1) {
+        alert("Letra já foi digitada! Favor Digite novamente!")
+    } else {
+        arrayDeLetrasCertas.push(letra);
+        var labelLetter = document.querySelectorAll("#labelLetter");
+        for (var i = 0; i < palavraOuFrase.length; i++) {
+            if (palavraOuFrase[i] == letra) {
+                labelLetter[i].innerHTML = letra;
+                totalDeAcertos++;
+            }
+        }
+    }
+
+
+    //Checando o placar se venceu o jogo!
+    if (totalDeAcertos === palavraOuFrase.length) {
+        youWin();
+    }
+}
+
+//Função com a regra de erros do jogo, onde irá preencher as letras certas no lugar das letras erradas
+var regraDeErro = function(letra) {
+    if (arrayDeLetrasErradas.indexOf(letra) > -1) {
+        alert("Letra já foi digitada! Favor Digite novamente!")
+    } else {
+        arrayDeLetrasErradas.push(letra);
+
+        var otherLetters = document.getElementById("otherLetters");
+        var textLabelOtherLetters = document.createElement("label");
+        textLabelOtherLetters.setAttribute("class", "otherLetters");
+        textLabelOtherLetters.setAttribute("type", "text");
+        textLabelOtherLetters.innerHTML = letra;
+        otherLetters.appendChild(textLabelOtherLetters);
+        totalDeErros--;
+
+        //Criando o desenho do boneco
+        desenhandoBoneco();
+    }
+
+    //Checando o placar
+    if (totalDeErros === 0) {
+        youLose();
+    }
+}
+
+//Função que desenha o boneco
+var desenhandoBoneco = function() {
+    //Local onde será criado o boneco
+    var grupo5 = document.getElementById("grupo5");
+
+    //Inicio dos elementos do boneco
+    var cabeca = document.querySelector(".ellipse");
+    if (cabeca === null) {
+        cabeca = document.createElement("img");
+        cabeca.setAttribute("class", "ellipse");
+        cabeca.setAttribute("src", "./img/Ellipse.png");
+    }
+
+    var corpo = document.querySelector(".retangulo18");
+    if (corpo === null) {
+        corpo = document.createElement("img");
+        corpo.setAttribute("class", "retangulo18");
+        corpo.setAttribute("src", "./img/Rectangle 18.png");
+    }
+
+    var bracoDireito = document.querySelector(".retangulo21");
+    if (bracoDireito === null) {
+        bracoDireito = document.createElement("img");
+        bracoDireito.setAttribute("class", "retangulo21");
+        bracoDireito.setAttribute("src", "./img/Rectangle 21.png");
+    }
+
+    var bracoEsquerdo = document.querySelector(".retangulo22");
+    if (bracoEsquerdo === null) {
+        bracoEsquerdo = document.createElement("img");
+        bracoEsquerdo.setAttribute("class", "retangulo22");
+        bracoEsquerdo.setAttribute("src", "./img/Rectangle 22.png");
+    }
+
+    var pernaDireita = document.querySelector(".retangulo20");
+    if (pernaDireita === null) {
+        pernaDireita = document.createElement("img");
+        pernaDireita.setAttribute("class", "retangulo20");
+        pernaDireita.setAttribute("src", "./img/Rectangle 20.png");
+    }
+
+    var pernaEsquerda = document.querySelector(".retangulo19");
+    if (pernaEsquerda === null) {
+        pernaEsquerda = document.createElement("img");
+        pernaEsquerda.setAttribute("class", "retangulo19");
+        pernaEsquerda.setAttribute("src", "./img/Rectangle 19.png");
+    }
+    //Fim dos elementos do boneco
+
+    //Switch para desenha o boneco, conforme a pontuação
+    switch (totalDeErros) {
+        case 5:
+            grupo5.appendChild(cabeca);
+            break;
+        case 4:
+            grupo5.appendChild(corpo);
+            break;
+        case 3:
+            grupo5.appendChild(bracoEsquerdo);
+            break;
+        case 2:
+            grupo5.appendChild(bracoDireito);
+            break;
+        case 1:
+            grupo5.appendChild(pernaEsquerda);
+            break;
+        case 0:
+            grupo5.appendChild(pernaDireita);
+            break;
+        default:
+            break;
+    }
+
+}
+
+//Função de alerta de vencedor!
+var youWin = function() {
+    alert("YOU WIN PERFECT!!!");
+}
+
+//Função de alerta de perdedor!
+var youLose = function() {
+    alert("GAME OVER!!!");
+}
+
+//Função para criar os botões de ação do jogo
 var criandoBotoesAction = function() {
     //Criando uma div para frame3 e as div dos butões
     criarDiv('actions', 'container');
@@ -266,21 +443,40 @@ var criandoBotoesAction = function() {
     criarInput("desistir", "button", "Desistir", "desistir");
 }
 
-
+//Função para começar um novo jogo
 var novoJogo = function() {
+    totalDeAcertos = 0;
+    totalDeErros = 6;
+    arrayDeLetrasErradas = [];
+    arrayDeLetrasCertas = [];
+
+    //Para o evento de ouvir as teclas digitas!
+    pararCapturarLetraDoTeclado();
+
+    //Condições para remover os elementos em caso existente
     var grupo5 = document.getElementById("grupo5");
-    grupo5.remove();
+    if (grupo5 !== null) {
+        grupo5.remove();
+    }
+
 
     var keyboard = document.getElementById("keyboard");
-    keyboard.remove();
+    if (keyboard !== null) {
+        keyboard.remove();
+    }
+
 
     var actions = document.getElementById("actions");
-    actions.remove();
+    if (actions != null) {
+        actions.remove();
+    }
+
 
     criarTelaInicial();
 
 }
 
+//Função para desistir do jogo e começar tudo do zero
 var desistir = function() {
     let confirma = confirm("Deseja Desistir?");
     if (confirma) {
@@ -288,8 +484,20 @@ var desistir = function() {
     }
 }
 
-var cancelar = function() {
-    criarTelaInicial();
+
+//Função para ouvir as teclas digitadas, salvar a tecla digitada na variavél e chamar a função com a regra do jogo
+function ouvirKeypress(event) {
+    teclaDigitada = event.key;
+    regraDoJogo();
 }
 
-// Fim da Tela 3
+//Função para capturar a teclas digitadas
+function capturarLetraDoTeclado() {
+    document.addEventListener('keypress', ouvirKeypress);
+
+}
+
+//Função para parar o evento que captura as teclas digitadas
+function pararCapturarLetraDoTeclado() {
+    document.removeEventListener('keypress', ouvirKeypress)
+}
