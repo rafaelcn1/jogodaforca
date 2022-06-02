@@ -50,17 +50,15 @@ input:focus {
 
 html {
     position: relative;
-    max-width: 1440px;
-    max-height: 1024px;
-    height: 100%;
+    max-width: 1200px;
+    max-height: 800px;
 }
 
 body {
     background: #D8DFE8;
-    width: 90%;
     margin: 0 auto;
-    min-width: 600px;
-    max-width: 1440px
+    max-width: 1200px;
+    max-height: 800px;
 }
 
 #cabecalho {
@@ -645,6 +643,24 @@ body {
     background: #0A3871;
     border-radius: 8px;
     transform: rotate(30deg);
+}
+
+.voceVenceu {
+    font-size: 30px;
+    color: green;
+    position: absolute;
+    left: 970px;
+    top: 350px;
+    text-align: center;
+}
+
+.vocePerdeu {
+    font-size: 30px;
+    color: red;
+    position: absolute;
+    left: 970px;
+    top: 350px;
+    text-align: center;
 }
 
 .copyright {

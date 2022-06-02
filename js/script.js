@@ -6,7 +6,9 @@ var arrayDeLetrasCertas = [];
 var palavrasCadastradas = [];
 var palavraOuFrase;
 
+var alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
+console.log(alfabeto.toString());
 var escolherPalavra = function() {
     var index = 0;
     if (palavrasCadastradas.length != 0) {
@@ -419,12 +421,22 @@ var desenhandoBoneco = function() {
 
 //Função de alerta de vencedor!
 var youWin = function() {
-    alert("YOU WIN PERFECT!!!");
+    criarDiv("voceVenceu", "container");
+    var divVoceVenceu = document.getElementById("voceVenceu");
+    var voceVenceu = document.createElement('label');
+    voceVenceu.setAttribute("class", "voceVenceu");
+    voceVenceu.innerHTML = "Você Venceu. Parabéns!";
+    divVoceVenceu.appendChild(voceVenceu);
 }
 
 //Função de alerta de perdedor!
 var youLose = function() {
-    alert("GAME OVER!!!");
+    criarDiv("vocePerdeu", "container");
+    var divVocePerdeu = document.getElementById("vocePerdeu");
+    var vocePerdeu = document.createElement('label');
+    vocePerdeu.setAttribute("class", "vocePerdeu");
+    vocePerdeu.innerHTML = "Você Perdeu!";
+    divVocePerdeu.appendChild(vocePerdeu);
 }
 
 //Função para criar os botões de ação do jogo
@@ -471,6 +483,16 @@ var novoJogo = function() {
         actions.remove();
     }
 
+    var divVoceVenceu = document.getElementById("voceVenceu");
+    if (divVoceVenceu != null) {
+        divVoceVenceu.remove();
+    }
+
+    var divVocePerdeu = document.getElementById("vocePerdeu");
+    if (divVocePerdeu != null) {
+        divVocePerdeu.remove();
+    }
+
 
     criarTelaInicial();
 
@@ -487,8 +509,15 @@ var desistir = function() {
 
 //Função para ouvir as teclas digitadas, salvar a tecla digitada na variavél e chamar a função com a regra do jogo
 function ouvirKeypress(event) {
-    teclaDigitada = event.key;
-    regraDoJogo();
+    var letra = event.key;
+    //Checando se a tecla digitada é uma letra
+    if (alfabeto.indexOf(letra.toUpperCase()) !== -1) {
+        teclaDigitada = event.key;
+        regraDoJogo();
+    } else {
+        alert("Favor Digitar uma Letra!")
+    }
+
 }
 
 //Função para capturar a teclas digitadas
