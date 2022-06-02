@@ -18,7 +18,7 @@ var escolherPalavra = function() {
 //Função para criar as divs e inputs da Tela Inicial
 var telaInicial = function() {
     criarDiv("botaoComecarJogar", "container");
-    criarInput("botaoComecarJogar", "button", "Comceçar a Jogar", "botaoComecarJogar");
+    criarInput("botaoComecarJogar", "button", "Começar a Jogar", "botaoComecarJogar");
     criarDiv("botaoAdicionarNovaPalavra", "container");
     criarInput("botaoAdicionarNovaPalavra", "button", "Adicionar Nova Palavra", "botaoAdicionarNovaPalavra");
 }
